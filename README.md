@@ -1,53 +1,20 @@
 # Routing Security & Backup–Recovery using TFTP Server (Cisco Packet Tracer)
 
-**Author:** Bhagyesh
-**Tool Used:** Cisco Packet Tracer
-**Category:** Networking / Network Security / Router Administration
-
----
-
 ## 📌 1. Project Objective
 
 This project demonstrates how to secure router-to-router communication using
 routing security best practices, and how to back up and recover Cisco device
 configurations (running-config, startup-config, IOS image) using a **TFTP
-server**. It simulates a small enterprise network with two routers, two
-switches, a TFTP server, and end devices.
-
----
-
-## 🖧 2. Network Topology
-
-```
-        PC0                                          PC1
-         |                                             |
-      Switch0                                       Switch1
-         |                                             |
-      R1 (Gi0/0)-------- Serial Link --------(Gi0/0) R2
-    (Gi0/1)                                       (Gi0/1)
-         |                                             |
-   TFTP Server                                     Server (Optional)
-```
-
-| Device        | Interface  | IP Address       | Subnet Mask      |
-|---------------|-----------|-------------------|-------------------|
-| R1            | Gi0/0     | 192.168.1.1       | 255.255.255.0     |
-| R1            | Se0/0/0   | 10.0.0.1          | 255.255.255.252   |
-| R1            | Gi0/1     | 192.168.10.1      | 255.255.255.0     |
-| R2            | Gi0/0     | 192.168.2.1       | 255.255.255.0     |
-| R2            | Se0/0/0   | 10.0.0.2          | 255.255.255.252   |
-| PC0           | NIC       | 192.168.1.10      | 255.255.255.0     |
-| PC1           | NIC       | 192.168.2.10      | 255.255.255.0     |
-| TFTP Server   | NIC       | 192.168.10.100    | 255.255.255.0     |
+server**. It simulates a small enterprise network
 
 ---
 
 ## 🛠 3. Tools & Requirements
 
-- Cisco Packet Tracer (8.x)
+- Cisco Packet Tracer (9.x)
 - 2 Routers (Type: 2911 or 1941)
 - 2 Switches (2960)
-- 2 PCs
+- 8 PCs
 - 1 Server (TFTP-enabled, Packet Tracer's built-in Server has a TFTP service)
 - Serial/Copper cables as needed
 
@@ -90,19 +57,6 @@ R1(config-line)# login
 R1(config-line)# transport input ssh
 ```
 
-**2. Enable SSH for remote access (instead of Telnet)**
-```
-R1(config)# ip domain-name mynetwork.local
-R1(config)# username admin secret admin123
-R1(config)# crypto key generate rsa
-   (choose 1024 bits)
-R1(config)# ip ssh version 2
-```
-
-**3. Encrypt all plaintext passwords**
-```
-R1(config)# service password-encryption
-```
 
 **4. OSPF Routing Protocol Authentication (MD5)**
 ```
