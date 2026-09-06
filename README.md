@@ -20,21 +20,44 @@ server**. It simulates a small enterprise network
 
 ---
 
-## ⚙️ 4. Implementation Steps
+## 🚀 4. Implementation Steps
 
-### Step A — Basic Device Configuration
+### Step A - Router password security / Type 5 Encription 
+```
+Router> enable
+Router# configure terminal
+Router(config)# username admin secret cisco@123
+Router(config)# line console 0
+Router(config-line)# login local
+Router(config-line)# exit
+
+Router(config)# line aux 0
+Router(config-line)# login local
+Router(config-line)# exit
+
+Router(config)#enable secret cisco123
+
+```
+### Step B - Router basic configuration / IP addressing 
 ```
 Router> enable
 Router# configure terminal
 Router(config)# hostname R1
-R1(config)# interface gigabitEthernet0/0
+R1(config)# interface fastethernet 0/0
+R1(config-if)# ip address 10.0.1.1 255.0.0.0
+R1(config-if)# no shutdown
+R1(config-if)# exit
+
+Router> enable
+Router# configure terminal
+Router(config)# hostname R1
+R1(config)# interface fastethernet 0/1
 R1(config-if)# ip address 192.168.1.1 255.255.255.0
 R1(config-if)# no shutdown
 R1(config-if)# exit
-```
-Repeat similarly for R2 and configure the serial link between R1 and R2.
 
-### Step B — Routing Configuration (OSPF)
+```
+### Step C — Routing Configuration (OSPF)
 ```
 R1(config)# router ospf 1
 R1(config-router)# network 192.168.1.0 0.0.0.255 area 0
@@ -175,4 +198,5 @@ administrators and a common real-world enterprise practice.
 
 ## 👤 Author
 **Bhagyesh**
-Feel free to connect on LinkedIn / check my GitHub for more networking projects.
+Feel free to connect on LinkedIn / check my 
+GitHub for more networking projects.
