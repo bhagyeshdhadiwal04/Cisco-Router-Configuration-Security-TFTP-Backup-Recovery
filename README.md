@@ -38,7 +38,7 @@ Router(config-line)# exit
 Router(config)#enable secret cisco123
 
 ```
-### Step B - Router basic configuration / IP addressing 
+### Step B - Router configuration / IP addressing 
 ```
 Router> enable
 Router# configure terminal
@@ -48,6 +48,8 @@ R1(config-if)# ip address 10.0.1.1 255.0.0.0
 R1(config-if)# no shutdown
 R1(config-if)# exit
 
+R2(config-if)#do show ip interface breif
+
 Router> enable
 Router# configure terminal
 Router(config)# hostname R2
@@ -56,12 +58,14 @@ R2(config-if)# ip address 192.168.1.1 255.255.255.0
 R2(config-if)# no shutdown
 R2(config-if)# exit
 
+R2(config-if)#do show ip interface breif
+
 ```
-### Step C — Routing Configuration (OSPF)
+### Step C — Data copy RAM to NVRAM 
 ```
-R1(config)# router ospf 1
-R1(config-router)# network 192.168.1.0 0.0.0.255 area 0
-R1(config-router)# network 10.0.0.0 0.0.0.3 area 0
+R1#copy running-config startup-config
+R1#show startup-config
+
 ```
 Repeat on R2 with its own networks.
 
