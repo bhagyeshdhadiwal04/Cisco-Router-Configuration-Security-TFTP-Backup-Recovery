@@ -48,7 +48,7 @@ R1(config-if)# ip address 10.0.1.1 255.0.0.0
 R1(config-if)# no shutdown
 R1(config-if)# exit
 
-R2(config-if)#do show ip interface breif
+R1(config-if)#do show ip interface breif
 
 Router> enable
 Router# configure terminal
@@ -68,7 +68,7 @@ R1#show startup-config
 
 ```
 
-### Step C — server backup and recovery
+### Step D — server backup 
 
 ```
 R1#copy startup-config tftp
@@ -86,9 +86,26 @@ R1#copy flash tftp
 source filename[]? 2800nm-advipserviceskg-mz151-4.m4.bin [paste this file path]
 Address or name of romote host[]? 10.0.0.100 {server ip same network id to router} 
 ```
+```
+### Step E — server Recovery
+```
+Router>en
+Router#config t
+Router(config)#interface fastethernet 0/0
+Router(config)#ip address 10.0.0.10 255.0.0.0
+Router(config)#no shutdown
 
-
-
+Router#copy tftp startup-config
+```
+Address or name of romote host[]? 10.0.0.100 {server ip same network id to router}
+source filename[]? R1-config
+```
+Router#show startup-config
+```
+All data visible 
+```
+Router#copy startup-config running-config
+```
 
 ## 🎯 7. Conclusion
 
@@ -101,5 +118,5 @@ administrators and a common real-world enterprise practice.
 
 ## 👤 Author
 **Bhagyesh**
-Feel free to connect on LinkedIn / check my 
-GitHub for more networking projects.
+|  linkedin.com/in/bhagyesh-dhadiwal12 
+   github.com/bhagyeshdhadiwal04 
