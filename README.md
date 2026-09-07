@@ -12,8 +12,8 @@ server**. It simulates a small enterprise network
 ## 🛠 3. Tools & Requirements
 
 - Cisco Packet Tracer (9.x)
-- 2 Routers (Type: 2911 or 1941)
-- 2 Switches (2960)
+- 2 Routers (Type: 2811 )
+- 2 Switches (295DT)
 - 8 PCs
 - 1 Server (TFTP-enabled, Packet Tracer's built-in Server has a TFTP service)
 - Serial/Copper cables as needed
